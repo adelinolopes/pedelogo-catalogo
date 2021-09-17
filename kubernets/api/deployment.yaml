@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+spec:
+  selector:
+    matchLabels:
+      app: api
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api
+          image: adelinoglopes/api-produto
+          env:
+            - name: Mongo_Host
+              value: mongo 
+            - name: mongo_user
+              value: mongouser
+            - name: mongo__password
+              value: Qsaude@2021
+            - name: mongo_port
+              value: 21017
+            - name: mongo_Databasse
+              value: admin
+          ports:
+            - containerPort: 80
